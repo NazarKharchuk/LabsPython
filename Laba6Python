@@ -1,0 +1,36 @@
+        #Variant 28
+from random import randint
+
+#=========Функція ініціалізації і виведення масиву=========
+def array_initiation(size, n, arr): 
+    for i in range(0, size):     
+        arr[i] = randint((10**(n-1)),(10**n))
+        print("{})\t{}".format(i+1, arr[i]))
+    return
+
+#=====Функція пошуку максимальної суми та її виведення=====
+def Max_sum(size, arr):
+    Max_sum = 0
+    sum = 0
+    for i in range(0, size):
+        number = arr[i]
+        while (number != 0):
+            sum += number % 10
+            number = number // 10
+        if (Max_sum < sum):
+            Max_sum = sum
+        sum = 0
+    print("Maximum amount is ", Max_sum )
+    return
+
+#==============Головна частина==============
+size = int(input("Enter size of the array : "))
+while (size <=0 ):
+    size = int(input("Enter positive size of the array : "))
+n = int(input("Enter number of cybers in number : "))
+while (n <=0 ):
+    n = int(input("Enter positive number of cybers in number : "))
+arr = [None] * size
+array_initiation(size, n, arr)      #Ініціалізація і виведення масиву
+Max_sum(size, arr)                  #Пошук максимальної суми та її виведення
+
